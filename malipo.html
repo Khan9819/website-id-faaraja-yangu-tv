@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Malipo Salama - Faraja Yangu TV</title>
+    
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
     <style>
         :root {
             --primary: #f9a826;
@@ -83,6 +87,7 @@
 
         .method-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
         .brand-logo { height: 25px; border-radius: 4px; }
+        
         .account-details {
             display: flex;
             justify-content: space-between;
@@ -110,8 +115,6 @@
         }
         .btn-done:hover { background: #1ebe57; transform: translateY(-3px); }
     </style>
-    <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 </head>
 <body>
 
@@ -132,7 +135,7 @@
         <div class="method-card" style="border-left: 4px solid var(--crdb-green);">
             <div class="method-header">
                 <span style="font-size: 14px; font-weight: bold; color: #6fb53e;">BANK TRANSFER</span>
-                <img src="assets/images/crdb.jpg" class="brand-logo" alt="CRDB">
+                <img src="assets/images/crdb.jpg" class="brand-logo" alt="CRDB Logo">
             </div>
             <div style="font-size: 11px; margin-bottom: 8px; color: #ccc;">Jina la Akaunti: <br><strong style="color: white; font-size: 13px;">TWAHA MDUNGI NYANZA</strong></div>
             <div class="account-details">
@@ -144,7 +147,7 @@
         <div class="method-card" style="border-left: 4px solid var(--airtel-red);">
             <div class="method-header">
                 <span style="font-size: 14px; font-weight: bold; color: #ff0000;">LIPA NAMBA (Airtel)</span>
-                <img src="assets/icons/airtel.svg" class="brand-logo" alt="Airtel">
+                <img src="assets/icons/airtel.svg" class="brand-logo" alt="Airtel Logo">
             </div>
             <div style="font-size: 11px; margin-bottom: 8px; color: #ccc;">Jina: <strong style="color: white;">FARAJA YANGU TV</strong><br>Piga *150*60# Merchant ID:</div>
             <div class="account-details">
@@ -175,17 +178,20 @@
 
         if (amount && !isNaN(amount)) {
             display.innerText = "TSh " + new Intl.NumberFormat().format(amount) + "/=";
+        } else {
+            display.innerText = "TSh 0/=";
         }
     });
 
     // 2. COPY FUNCTION
     function copyText(elementId) {
         const text = document.getElementById(elementId).innerText;
-        navigator.clipboard.writeText(text);
-        const btn = document.querySelector(`button[onclick="copyText('${elementId}')"]`);
-        const originalText = btn.innerText;
-        btn.innerText = "DONE!";
-        setTimeout(() => { btn.innerText = originalText; }, 1500);
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.querySelector(`button[onclick="copyText('${elementId}')"]`);
+            const originalText = btn.innerText;
+            btn.innerText = "DONE!";
+            setTimeout(() => { btn.innerText = originalText; }, 1500);
+        });
     }
 
     // 3. WHATSAPP SEND RECEIPT
