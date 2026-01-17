@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Malipo Salama - Faraja Yangu TV</title>
+    <style>
+        :root {
+            --primary: #f9a826;
+            --secondary: #c9602b;
+            --dark: #0a0a0a;
+            --glass: rgba(255, 255, 255, 0.05);
+            --crdb-green: #006a4d;
+            --airtel-red: #ff0000;
+        }
+
+        body {
+            background: var(--dark);
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            color: white;
+            padding: 20px;
+        }
+
+        .payment-card {
+            background: var(--glass);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 30px;
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+        }
+
+        .official-logo {
+            width: 120px;
+            height: auto;
+            border-radius: 12px;
+            margin-bottom: 10px;
+        }
+
+        .step-badge {
+            background: var(--secondary);
+            color: white;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .amount-box {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0,0,0,0.4);
+            border-radius: 20px;
+            border: 2px dashed var(--secondary);
+        }
+
+        .amount-box h2 {
+            margin: 10px 0 0 0;
+            color: var(--primary);
+            font-size: 36px;
+            font-weight: 800;
+        }
+
+        .method-container { text-align: left; margin-top: 25px; }
+        .method-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 18px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .method-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
+        .brand-logo { height: 25px; border-radius: 4px; }
+        .account-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(0,0,0,0.3);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .acc-number { font-family: 'Courier New', monospace; font-size: 17px; font-weight: bold; letter-spacing: 1px; }
+        .copy-btn { background: var(--primary); color: black; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 10px; font-weight: 800; }
+
+        .input-group { text-align: left; margin: 25px 0; }
+        .input-group label { display: block; font-size: 12px; margin-bottom: 8px; color: #aaa; }
+        .input-group input {
+            width: 100%; padding: 15px; background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 16px; outline: none; box-sizing: border-box;
+        }
+
+        .btn-done {
+            background: #25d366; color: white; border: none; width: 100%; padding: 18px;
+            border-radius: 15px; font-weight: 800; font-size: 17px; cursor: pointer;
+            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); transition: 0.3s;
+        }
+        .btn-done:hover { background: #1ebe57; transform: translateY(-3px); }
+    </style>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="payment-card">
+    <video autoplay muted loop playsinline class="official-logo">
+        <source src="assets/video/animation.mp4" type="video/mp4">
+    </video>
+    <div style="font-size: 10px; color: #888; margin-bottom: 10px; letter-spacing: 2px;">OFFICIAL PAYMENT GATEWAY</div>
+    
+    <span class="step-badge">Hatua ya Mwisho</span>
+    
+    <div class="amount-box">
+        <span style="font-size: 12px; color: #aaa; text-transform: uppercase;">Kianzio (70%)</span>
+        <h2 id="finalAmount">TSh ...</h2>
+    </div>
+
+    <div class="method-container">
+        <div class="method-card" style="border-left: 4px solid var(--crdb-green);">
+            <div class="method-header">
+                <span style="font-size: 14px; font-weight: bold; color: #6fb53e;">BANK TRANSFER</span>
+                <img src="assets/images/crdb.jpg" class="brand-logo" alt="CRDB">
+            </div>
+            <div style="font-size: 11px; margin-bottom: 8px; color: #ccc;">Jina la Akaunti: <br><strong style="color: white; font-size: 13px;">TWAHA MDUNGI NYANZA</strong></div>
+            <div class="account-details">
+                <span class="acc-number" id="bankAcc">0152664771400</span>
+                <button class="copy-btn" onclick="copyText('bankAcc')">Copy</button>
+            </div>
+        </div>
+
+        <div class="method-card" style="border-left: 4px solid var(--airtel-red);">
+            <div class="method-header">
+                <span style="font-size: 14px; font-weight: bold; color: #ff0000;">LIPA NAMBA (Airtel)</span>
+                <img src="assets/icons/airtel.svg" class="brand-logo" alt="Airtel">
+            </div>
+            <div style="font-size: 11px; margin-bottom: 8px; color: #ccc;">Jina: <strong style="color: white;">FARAJA YANGU TV</strong><br>Piga *150*60# Merchant ID:</div>
+            <div class="account-details">
+                <span class="acc-number" id="airtelLipa">13561697</span>
+                <button class="copy-btn" onclick="copyText('airtelLipa')">Copy</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="input-group">
+        <label>Thibitisha Namba iliyolipa / Muamala ID</label>
+        <input type="text" id="txnRef" placeholder="Weka namba au Ref No">
+    </div>
+
+    <button onclick="sendReceipt()" class="btn-done">NIMELIPA - TUMA RISITI</button>
+    
+    <p style="font-size: 11px; color: #555; margin-top: 20px;">
+        Hakikisha unatuma picha ya risiti WhatsApp baada ya kubonyeza kitufe hapo juu.
+    </p>
+</div>
+
+<script>
+    // 1. POKEA KIASI KUTOKA URL
+    document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const amount = urlParams.get('amount');
+        const display = document.getElementById('finalAmount');
+
+        if (amount && !isNaN(amount)) {
+            display.innerText = "TSh " + new Intl.NumberFormat().format(amount) + "/=";
+        }
+    });
+
+    // 2. COPY FUNCTION
+    function copyText(elementId) {
+        const text = document.getElementById(elementId).innerText;
+        navigator.clipboard.writeText(text);
+        const btn = document.querySelector(`button[onclick="copyText('${elementId}')"]`);
+        const originalText = btn.innerText;
+        btn.innerText = "DONE!";
+        setTimeout(() => { btn.innerText = originalText; }, 1500);
+    }
+
+    // 3. WHATSAPP SEND RECEIPT
+    function sendReceipt() {
+        const refValue = document.getElementById('txnRef').value.trim();
+        if (refValue === "") {
+            alert("Tafadhali weka namba uliyotumia au ID ya muamala!");
+            return;
+        }
+
+        const storedData = localStorage.getItem('faraja_pending_job');
+        if (!storedData) {
+            alert("Hitilafu: Data hazipo. Rudi mwanzo ujaze fomu.");
+            return;
+        }
+
+        const d = JSON.parse(storedData);
+        const formatTSH = (n) => new Intl.NumberFormat('en-US').format(n);
+
+        // Ujumbe wa WhatsApp
+        let msg = `*UTHIBITISHO WA MALIPO (70%)*\n`;
+        msg += `----------------------------\n`;
+        msg += `*MTEJA:* ${d.customerName}\n`;
+        msg += `*HUDUMA:* ${d.serviceType}\n`;
+        msg += `*PACKAGE:* ${d.selectedPackage}\n`;
+        msg += `*JUMLA KUU:* TSh ${formatTSH(d.totalPrice)}\n`;
+        msg += `*KILICHOLIPWA:* TSh ${formatTSH(d.depositAmount)}/=\n`;
+        msg += `*REF/MUAMALA:* ${refValue}\n`;
+        msg += `----------------------------\n`;
+        msg += `*MADRASA:* ${d.madrasaName}\n`;
+        msg += `*LOCATION:* ${d.location}\n`;
+        msg += `*TAREHE:* ${d.eventDate}\n`;
+        msg += `----------------------------\n`;
+        msg += `_Ninatuma picha ya risiti sasa hivi..._`;
+
+        const waUrl = "https://wa.me/255699529291?text=" + encodeURIComponent(msg);
+        window.location.href = waUrl;
+    }
+</script>
+
+</body>
+</html>
