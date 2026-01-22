@@ -27,7 +27,8 @@
             min-height: 100vh;
             margin: 0;
             color: white;
-            padding: 20px;
+            padding: 15px; /* Padding ndogo kwa ajili ya simu */
+            box-sizing: border-box;
         }
 
         .payment-card {
@@ -35,109 +36,119 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 30px;
-            padding: 30px;
+            border-radius: 25px;
+            padding: 20px;
             width: 100%;
-            max-width: 480px;
+            max-width: 420px; /* Upana bora kwa simu na PC */
             text-align: center;
             box-shadow: 0 25px 60px rgba(0,0,0,0.6);
+            box-sizing: border-box;
         }
 
-        .official-logo {
-            width: 120px;
-            height: auto;
-            border-radius: 12px;
+        /* Logo imerekebishwa iwe ndogo na nzuri */
+        .header-logo {
+            width: 80px; 
+            height: 80px;
+            object-fit: cover;
+            border-radius: 50%; /* Inafanya logo iwe ya duara */
             margin-bottom: 10px;
+            border: 2px solid var(--primary);
         }
 
         .step-badge {
             background: var(--secondary);
             color: white;
-            padding: 6px 16px;
+            padding: 5px 14px;
             border-radius: 20px;
-            font-size: 11px;
+            font-size: 10px;
             font-weight: 800;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            display: inline-block;
         }
 
         .amount-box {
-            margin: 20px 0;
-            padding: 20px;
+            margin: 15px 0;
+            padding: 15px;
             background: rgba(0,0,0,0.4);
-            border-radius: 20px;
+            border-radius: 15px;
             border: 2px dashed var(--secondary);
         }
 
         .amount-box h2 {
-            margin: 10px 0 0 0;
+            margin: 5px 0 0 0;
             color: var(--primary);
-            font-size: 36px;
+            font-size: 28px; /* Size nzuri kwa screen ndogo */
             font-weight: 800;
         }
 
-        .method-container { text-align: left; margin-top: 25px; }
+        .method-container { text-align: left; margin-top: 20px; }
+        
         .method-card {
             background: rgba(255, 255, 255, 0.03);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            border-radius: 18px;
-            padding: 15px;
-            margin-bottom: 15px;
+            border-radius: 15px;
+            padding: 12px;
+            margin-bottom: 12px;
         }
 
-        .method-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-        .brand-logo { height: 25px; border-radius: 4px; }
+        .method-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+        .brand-logo { height: 20px; border-radius: 4px; }
         
         .account-details {
             display: flex;
             justify-content: space-between;
             align-items: center;
             background: rgba(0,0,0,0.3);
-            padding: 12px;
+            padding: 10px;
             border-radius: 10px;
-            border: 1px solid rgba(255,255,255,0.05);
         }
 
-        .acc-number { font-family: 'Courier New', monospace; font-size: 17px; font-weight: bold; letter-spacing: 1px; }
-        .copy-btn { background: var(--primary); color: black; border: none; padding: 6px 12px; border-radius: 8px; cursor: pointer; font-size: 10px; font-weight: 800; }
+        .acc-number { font-family: 'Courier New', monospace; font-size: 15px; font-weight: bold; }
+        .copy-btn { background: var(--primary); color: black; border: none; padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 10px; font-weight: 800; }
 
-        .input-group { text-align: left; margin: 25px 0; }
-        .input-group label { display: block; font-size: 12px; margin-bottom: 8px; color: #aaa; }
+        .input-group { text-align: left; margin: 20px 0; }
+        .input-group label { display: block; font-size: 11px; margin-bottom: 6px; color: #aaa; }
         .input-group input {
-            width: 100%; padding: 15px; background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: white; font-size: 16px; outline: none; box-sizing: border-box;
+            width: 100%; padding: 12px; background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: white; font-size: 15px; outline: none; box-sizing: border-box;
         }
 
         .btn-done {
-            background: #25d366; color: white; border: none; width: 100%; padding: 18px;
-            border-radius: 15px; font-weight: 800; font-size: 17px; cursor: pointer;
-            box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2); transition: 0.3s;
+            background: #25d366; color: white; border: none; width: 100%; padding: 15px;
+            border-radius: 12px; font-weight: 800; font-size: 16px; cursor: pointer;
+            transition: 0.3s;
         }
-        .btn-done:hover { background: #1ebe57; transform: translateY(-3px); }
+
+        /* Responsive adjustments kwa simu ndogo zaidi */
+        @media (max-width: 360px) {
+            .amount-box h2 { font-size: 24px; }
+            .acc-number { font-size: 13px; }
+            .payment-card { padding: 15px; }
+        }
     </style>
 </head>
 <body>
 
 <div class="payment-card">
-    <video autoplay muted loop playsinline class="official-logo">
-        <source src="assets/video/animation.mp4" type="video/mp4">
-    </video>
-    <div style="font-size: 10px; color: #888; margin-bottom: 10px; letter-spacing: 2px;">OFFICIAL PAYMENT GATEWAY</div>
+    <div class="logo-section">
+        <img src="assets/images/logo.jpg" alt="Logo" class="header-logo">
+    </div>
+    <div style="font-size: 9px; color: #888; margin-bottom: 10px; letter-spacing: 1.5px; text-transform: uppercase;">Official Payment Gateway</div>
     
     <span class="step-badge">Hatua ya Mwisho</span>
     
     <div class="amount-box">
-        <span style="font-size: 12px; color: #aaa; text-transform: uppercase;">Kianzio (70%)</span>
+        <span style="font-size: 11px; color: #aaa; text-transform: uppercase;">Kianzio (70%)</span>
         <h2 id="finalAmount">TSh ...</h2>
     </div>
 
     <div class="method-container">
         <div class="method-card" style="border-left: 4px solid var(--crdb-green);">
             <div class="method-header">
-                <span style="font-size: 14px; font-weight: bold; color: #6fb53e;">BANK TRANSFER</span>
-                <img src="assets/images/crdb.jpg" class="brand-logo" alt="CRDB Logo">
+                <span style="font-size: 13px; font-weight: bold; color: #6fb53e;">BANK TRANSFER</span>
+                <img src="assets/images/crdb.jpg" class="brand-logo" alt="CRDB">
             </div>
-            <div style="font-size: 11px; margin-bottom: 8px; color: #ccc;">Jina la Akaunti: <br><strong style="color: white; font-size: 13px;">TWAHA MDUNGI NYANZA</strong></div>
+            <div style="font-size: 10px; margin-bottom: 8px; color: #ccc;">Jina la Akaunti: <br><strong style="color: white; font-size: 12px;">TWAHA MDUNGI NYANZA</strong></div>
             <div class="account-details">
                 <span class="acc-number" id="bankAcc">0152664771400</span>
                 <button class="copy-btn" onclick="copyText('bankAcc')">Copy</button>
@@ -146,10 +157,10 @@
 
         <div class="method-card" style="border-left: 4px solid var(--airtel-red);">
             <div class="method-header">
-                <span style="font-size: 14px; font-weight: bold; color: #ff0000;">LIPA NAMBA (Airtel)</span>
-                <img src="assets/icons/airtel.svg" class="brand-logo" alt="Airtel Logo">
+                <span style="font-size: 13px; font-weight: bold; color: #ff0000;">LIPA NAMBA (Airtel)</span>
+                <img src="assets/icons/airtel.svg" class="brand-logo" alt="Airtel">
             </div>
-            <div style="font-size: 11px; margin-bottom: 8px; color: #ccc;">Jina: <strong style="color: white;">FARAJA YANGU TV</strong><br>Piga *150*60# Merchant ID:</div>
+            <div style="font-size: 10px; margin-bottom: 8px; color: #ccc;">Jina: <strong style="color: white;">FARAJA YANGU TV</strong><br>Piga *150*60# Merchant ID:</div>
             <div class="account-details">
                 <span class="acc-number" id="airtelLipa">13561697</span>
                 <button class="copy-btn" onclick="copyText('airtelLipa')">Copy</button>
@@ -164,13 +175,12 @@
 
     <button onclick="sendReceipt()" class="btn-done">NIMELIPA - TUMA RISITI</button>
     
-    <p style="font-size: 11px; color: #555; margin-top: 20px;">
+    <p style="font-size: 10px; color: #666; margin-top: 15px; line-height: 1.4;">
         Hakikisha unatuma picha ya risiti WhatsApp baada ya kubonyeza kitufe hapo juu.
     </p>
 </div>
 
 <script>
-    // 1. POKEA KIASI KUTOKA URL
     document.addEventListener('DOMContentLoaded', function() {
         const urlParams = new URLSearchParams(window.location.search);
         const amount = urlParams.get('amount');
@@ -183,7 +193,6 @@
         }
     });
 
-    // 2. COPY FUNCTION
     function copyText(elementId) {
         const text = document.getElementById(elementId).innerText;
         navigator.clipboard.writeText(text).then(() => {
@@ -194,7 +203,6 @@
         });
     }
 
-    // 3. WHATSAPP SEND RECEIPT
     function sendReceipt() {
         const refValue = document.getElementById('txnRef').value.trim();
         if (refValue === "") {
@@ -211,7 +219,6 @@
         const d = JSON.parse(storedData);
         const formatTSH = (n) => new Intl.NumberFormat('en-US').format(n);
 
-        // Ujumbe wa WhatsApp
         let msg = `*UTHIBITISHO WA MALIPO (70%)*\n`;
         msg += `----------------------------\n`;
         msg += `*MTEJA:* ${d.customerName}\n`;
