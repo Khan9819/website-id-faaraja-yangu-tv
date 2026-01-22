@@ -49,301 +49,206 @@
         }
         .btn-submit-modal:hover { transform: scale(1.02); box-shadow: 0 10px 20px rgba(201, 96, 43, 0.3); }
 
-        @media (max-width: 600px) { .form-grid { grid-template-columns: 1fr; } }
+        /* KEYFRAMES FOR PRELOADER */
+        @keyframes pulseLogo { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.05); opacity: 1; } }
+        @keyframes slideLoading { 0% { left: -100%; } 100% { left: 100%; } }
+        @keyframes pulse { 0%, 100% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.1); opacity: 1; } }
+
+        /* MAREKEBISHO YA MOBILE (VIPINDI VIWILI VIWILI) */
+        @media (max-width: 600px) { 
+            .form-grid { grid-template-columns: 1fr; } 
+            .shows-grid, .packages-grid { 
+                grid-template-columns: 1fr 1fr !important; 
+                gap: 10px !important; 
+            }
+            .show-card { height: auto !important; }
+            .hero-content h1 { font-size: 28px !important; }
+        }
     </style>
 </head>
 <body style="margin: 0; padding: 0; background-color: #0d0d0d; font-family: sans-serif;">
 
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0a0a; display: flex; flex-direction: column; justify-content: center; align-items: center; z-index: 9999999; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s;">
-        
         <div style="position: relative; display: flex; flex-direction: column; align-items: center;">
-            <img src="assets/images/Fy-Logo.png" 
-                 style="width: 100px; filter: drop-shadow(0 0 10px rgba(249, 168, 38, 0.4)); animation: pulseLogo 2s infinite ease-in-out;" 
-                 alt="Faraja TV Logo">
-            
+            <img src="assets/images/Fy-Logo.png" style="width: 100px; filter: drop-shadow(0 0 10px rgba(249, 168, 38, 0.4)); animation: pulseLogo 2s infinite ease-in-out;" alt="Faraja TV Logo">
             <div style="width: 180px; height: 2px; background: rgba(255,255,255,0.05); border-radius: 20px; margin-top: 30px; overflow: hidden; position: relative;">
                 <div style="position: absolute; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, #f9a826, transparent); animation: slideLoading 1.5s infinite ease-in-out;"></div>
             </div>
-            
             <span style="color: #f9a826; font-size: 10px; letter-spacing: 5px; margin-top: 15px; font-weight: bold; opacity: 0.8;">FARAJA YANGU TV</span>
         </div>
     </div>
 
-    <style>
-        @keyframes pulseLogo {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.05); opacity: 1; }
-        }
-        @keyframes slideLoading {
-            0% { left: -100%; }
-            100% { left: 100%; }
-        }
-    </style>
-
     <header class="main-header">
-        </header>
-    
-    <main>
-        </main>
-
-    <script>
-        // 1. Mara tu body inapoanza, zuia kuscroll ili preloader isivuje
-        document.body.style.overflow = 'hidden';
-
-        // 2. Kazi ya kuondoa preloader kila kitu kikimaliza (Picha, Video, CSS)
-        window.addEventListener('load', function() {
-            const preloader = document.getElementById('preloader');
-            
-            if (preloader) {
-                // Anza kuififisha (Fade out)
-                preloader.style.opacity = '0';
-                preloader.style.visibility = 'hidden';
-                
-                // Subiri sekunde 0.8 ya transition imalizike ndipo uruhusu kuscroll
-                setTimeout(() => {
-                    preloader.style.display = 'none';
-                    document.body.style.overflow = 'auto'; // Ruhusu kuscroll sasa
-                }, 800);
-            }
-        });
-
-        // 3. SAFETY TIMEOUT: Kama internet ni mbaya sana, ondoa loading baada ya sekunde 7
-        setTimeout(() => {
-            const preloader = document.getElementById('preloader');
-            if (preloader && preloader.style.display !== 'none') {
-                preloader.style.opacity = '0';
-                preloader.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        },1000)
-    </script>
-
-</body>
-</html>
-
-<style>
-    @keyframes pulse { 0%, 100% { transform: scale(0.9); opacity: 0.7; } 50% { transform: scale(1.1); opacity: 1; } }
-    @keyframes loading { 100% { left: 100%; } }
-</style>
-
-<header class="main-header">
-    <div class="header-container">
-        <div class="logo-section">
-            <img src="assets/images/logo.jpg" alt="Faraja Yangu TV Logo" class="header-logo">
-        </div>
-
-<div class="contact-box">
-    <div class="contact-item">
-        <span class="icon">📞</span>
-        <div class="details">
-            <small>Tupigie sasa:</small>
-            <a href="tel:+255797529291" class="contact-link">+255 797 529 291</a>
-            <a href="tel:+255699529291" class="contact-link">+255 699 529 291</a>
-        </div>
-    </div>
-
-    <div class="contact-item">
-        <span class="icon">✉️</span>
-        <div class="details">
-            <small>Email yetu:</small>
-            <a href="farajamobile@gmail.com" class="contact-link">farajamobile@gamil.com<a/a>
-        </div>
-    </div>
-</div>
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-</header>
-
-<header class="hero">
-  <video autoplay muted loop playsinline class="hero-video">
-    <source src="assets/video/animation.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-
-  <div class="hero-overlay"></div>
-
-  <div class="hero-content">
-    <h1>Faraja Yangu TV</h1>
-    <p>Media • Elimu • Daawah • Burudani ya Kiislamu</p>
-
-    <div class="hero-buttons">
-      <a href="https://play.google.com/apps/test/co.tz.farajayangutv.app/2" class="hero-card">
-        <div class="card-icon">📱</div>
-        <div class="card-text"><span>Inapatikana</span><h4>Pakua App</h4></div>
-      </a>
-      <a href="assets/pdf/All Package.pdf" download class="hero-card">
-        <div class="card-icon">📄</div>
-        <div class="card-text"><span>Gharama Zetu</span><h4>Package Zetu</h4></div>
-      </a>
-    </div>
-  </div>
-</header>
-
-<div class="content-backdrop">
-  <section class="shows">
-    <div class="shows-header-card">
-      <h2>Vipindi Vyetu</h2>
-    </div>
-
-    <p class="shows-intro">
-      Tunakuletea vipindi vya kielimu, daawah, burudani za kiislamu na maudhui ya
-      kijamii kwa ubora wa hali ya juu.
-    </p>
-
-
-  <div class="shows-grid">
-    <div class="show-card">
-      <img src="assets/images/ladha.jpg" alt="Kipindi 1">
-      <div class="show-overlay"><h3>Ladha za Dufu</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/sabuni.jpg" alt="Kipindi 2">
-      <div class="show-overlay"><h3>Sabuni ya Roho</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/quran.jpg" alt="Kipindi 3">
-      <div class="show-overlay"><h3>Qur an Tajweed</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/qaswida.jpg" alt="Kipindi 4">
-      <div class="show-overlay"><h3>Qaswida Zetu</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/mawaidha.jpg" alt="Kipindi 5">
-      <div class="show-overlay"><h3>Mawaidha</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/ijumaa.jpg" alt="Kipindi 6">
-      <div class="show-overlay"><h3>VIjumaa na swala yake</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/baridi.jpg" alt="Kipindi 7">
-      <div class="show-overlay"><h3>Mziki Baridi</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/moto.jpg" alt="Kipindi 8">
-      <div class="show-overlay"><h3>Mziki Moto</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/maulid.jpg" alt="Kipindi 9">
-      <div class="show-overlay"><h3>Maulidi Barazanji</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/swifa.png" alt="Kipindi 10">
-      <div class="show-overlay"><h3>Swifat Rasoul</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/audio.jpg" alt="Kipindi 11">
-      <div class="show-overlay"><h3>Qaswida zote za Audio</h3></div>
-    </div>
-    <div class="show-card">
-      <img src="assets/images/video.jpg" alt="Kipindi 12">
-      <div class="show-overlay"><h3>Qaswida zote za Video</h3></div>
-    </div>
-  </div>
-</section>
-</div>
-
-<section class="packages-section">
-  <div class="packages-header-card">
-    <h2>Package Zetu</h2>
-    <p>Chagua kifurushi kinachoendana na wewe</p>
-  </div>
-
-  <div class="packages-grid">
-    <div class="package-card">
-      <img src="assets/images/package1.jpg" alt="Package 1">
-      <div class="package-info"></div>
-    </div>
-
-    <div class="package-card">
-      <img src="assets/images/package2.jpg" alt="Package 2">
-      <div class="package-info"></div>
-    </div>
-
-    <div class="package-card">
-      <img src="assets/images/package3.jpg" alt="Package 3">
-      <div class="package-info"></div>
-    </div>
-  </div>
-
- <div class="booking-cta-wrapper">
-    <div class="package-card booking-card">
-        <div class="package-info">
-            <h3>Book Shughuli Yako</h3>
-            <p>Chagua leo na uanze kufurahia huduma yetu</p>
-            <button id="btnOpenBooking" class="btn-small" style="cursor:pointer; border:none; width:100%;">Book Now</button>
-        </div>
-    </div>
-</div>
-
-<div id="bookingModal" class="modal-overlay">
-    <div class="modal-glass-box">
-        <span class="close-modal" id="btnCloseModal" style="cursor:pointer;">&times;</span>
-        <div class="modal-header">
-            <h2>Book Shughuli Yako</h2>
-            <p>Jaza fomu hii kwa usahihi</p>
-        </div>
-
-        <form id="farajaBookingForm" class="booking-form-modal">
-            <div class="form-grid">
-                <div class="input-box">
-                    <label>Jina Lako</label>
-                    <input type="text" id="fname" placeholder="Jina kamili" required>
+        <div class="header-container">
+            <div class="logo-section">
+                <img src="assets/images/logo.jpg" alt="Faraja Yangu TV Logo" class="header-logo">
+            </div>
+            <div class="contact-box">
+                <div class="contact-item">
+                    <span class="icon">📞</span>
+                    <div class="details">
+                        <small>Tupigie sasa:</small>
+                        <a href="tel:+255797529291" class="contact-link">+255 797 529 291</a>
+                        <a href="tel:+255699529291" class="contact-link">+255 699 529 291</a>
+                    </div>
                 </div>
-                <div class="input-box">
-                    <label>Namba ya Simu</label>
-                    <input type="tel" id="fphone" placeholder="07xx xxx xxx" required>
-                </div>
-
-                <div class="input-box">
-                    <label>Aina ya Shughuli</label>
-                    <input type="text" id="ftype" placeholder="Mfano: Jamvi, Ziara, Ndoa n.k" required>
-                </div>
-
-                <div class="input-box">
-                     <label>Chagua Package</label>
-                    <select id="fpackage" required>
-                    <option value="" disabled selected>Chagua Package...</option>
-                    <option value="Jamvi|150000">1. Jamvi - 150,000/=</option>
-                    <option value="Live Package|1500000">2. Live Package - 1,500,000/=</option>
-                    <option value="Ziara Bila Live|250000">3. Ziara Bila Live - 250,000/=</option>
-                    <option value="Custom|0">Nyinginezo (Maelezo WhatsApp)</option>
-              </select>
-               </div>
-
-                <div class="input-box">
-                    <label>Jina la Madrasa</label>
-                    <input type="text" id="fmadrasa" placeholder="Jina la Madrasa" required>
-                </div>
-                <div class="input-box">
-                    <label>Eneo la Madrasa</label>
-                    <input type="text" id="flocation" placeholder="Mfano: Magomeni" required>
-                </div>
-                <div class="input-box">
-                    <label>Tarehe ya Shughuli</label>
-                    <input type="date" id="fdate" required>
-                </div>
-                <div class="input-box">
-                    <label>Muda wa Kuanza</label>
-                    <input type="time" id="ftime" required>
-                </div>
-                <div class="input-box">
-                    <label>Siku za Media Kufanya Kazi</label>
-                    <input type="number" id="fdays" min="1" placeholder="Siku ngapi?" required>
+                <div class="contact-item">
+                    <span class="icon">✉️</span>
+                    <div class="details">
+                        <small>Email yetu:</small>
+                        <a href="mailto:farajamobile@gmail.com" class="contact-link">farajamobile@gmail.com</a>
+                    </div>
                 </div>
             </div>
+        </div>
+    </header>
 
-            <div id="payment-notice" style="margin-top: 15px; padding: 10px; background: rgba(201, 96, 43, 0.2); border-left: 4px solid #c9602b; font-size: 13px; color: #fff;">
-                <strong>Ilani ya Malipo:</strong> Unatakiwa kulipia asilimia **70%** ya gharama ya package unayochagua kama kianzio cha huduma.
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="assets/video/animation.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Faraja Yangu TV</h1>
+            <p>Media • Elimu • Daawah • Burudani ya Kiislamu</p>
+            <div class="hero-buttons">
+                <a href="https://play.google.com/apps/test/co.tz.farajayangutv.app/2" class="hero-card">
+                    <div class="card-icon">📱</div>
+                    <div class="card-text"><span>Inapatikana</span><h4>Pakua App</h4></div>
+                </a>
+                <a href="assets/pdf/All Package.pdf" download class="hero-card">
+                    <div class="card-icon">📄</div>
+                    <div class="card-text"><span>Gharama Zetu</span><h4>Package Zetu</h4></div>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="content-backdrop">
+        <section class="shows">
+            <div class="shows-header-card">
+                <h2>Vipindi Vyetu</h2>
+            </div>
+            <p class="shows-intro">
+                Tunakuletea vipindi vya kielimu, daawah, burudani za kiislamu na maudhui ya kijamii kwa ubora wa hali ya juu.
+            </p>
+
+            <div class="shows-grid">
+                <div class="show-card">
+                    <img src="assets/images/ladha.jpg" alt="Kipindi 1">
+                    <div class="show-overlay"><h3>Ladha za Dufu</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/sabuni.jpg" alt="Kipindi 2">
+                    <div class="show-overlay"><h3>Sabuni ya Roho</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/quran.jpg" alt="Kipindi 3">
+                    <div class="show-overlay"><h3>Qur an Tajweed</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/qaswida.jpg" alt="Kipindi 4">
+                    <div class="show-overlay"><h3>Qaswida Zetu</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/mawaidha.jpg" alt="Kipindi 5">
+                    <div class="show-overlay"><h3>Mawaidha</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/ijumaa.jpg" alt="Kipindi 6">
+                    <div class="show-overlay"><h3>VIjumaa na swala yake</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/baridi.jpg" alt="Kipindi 7">
+                    <div class="show-overlay"><h3>Mziki Baridi</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/moto.jpg" alt="Kipindi 8">
+                    <div class="show-overlay"><h3>Mziki Moto</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/maulid.jpg" alt="Kipindi 9">
+                    <div class="show-overlay"><h3>Maulidi Barazanji</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/swifa.png" alt="Kipindi 10">
+                    <div class="show-overlay"><h3>Swifat Rasoul</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/audio.jpg" alt="Kipindi 11">
+                    <div class="show-overlay"><h3>Qaswida zote za Audio</h3></div>
+                </div>
+                <div class="show-card">
+                    <img src="assets/images/video.jpg" alt="Kipindi 12">
+                    <div class="show-overlay"><h3>Qaswida zote za Video</h3></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <section class="packages-section">
+        <div class="packages-header-card">
+            <h2>Package Zetu</h2>
+            <p>Chagua kifurushi kinachoendana na wewe</p>
+        </div>
+
+        <div class="packages-grid">
+            <div class="package-card"><img src="assets/images/package1.jpg" alt="Package 1"><div class="package-info"></div></div>
+            <div class="package-card"><img src="assets/images/package2.jpg" alt="Package 2"><div class="package-info"></div></div>
+            <div class="package-card"><img src="assets/images/package3.jpg" alt="Package 3"><div class="package-info"></div></div>
+        </div>
+
+        <div class="booking-cta-wrapper">
+            <div class="package-card booking-card">
+                <div class="package-info">
+                    <h3>Book Shughuli Yako</h3>
+                    <p>Chagua leo na uanze kufurahia huduma yetu</p>
+                    <button id="btnOpenBooking" class="btn-submit-modal" style="cursor:pointer; width:100%;">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="bookingModal" class="modal-overlay">
+        <div class="modal-glass-box">
+            <span class="close-modal" id="btnCloseModal">&times;</span>
+            <div class="modal-header">
+                <h2>Book Shughuli Yako</h2>
+                <p>Jaza fomu hii kwa usahihi</p>
             </div>
 
-            <button type="submit" class="btn-submit-modal">Tuma Booking & Lipia 70%</button>
-        </form>
-    </div>
-</div>
+            <form id="farajaBookingForm" class="booking-form-modal">
+                <div class="form-grid">
+                    <div class="input-box"><label>Jina Lako</label><input type="text" id="fname" placeholder="Jina kamili" required></div>
+                    <div class="input-box"><label>Namba ya Simu</label><input type="tel" id="fphone" placeholder="07xx xxx xxx" required></div>
+                    <div class="input-box"><label>Aina ya Shughuli</label><input type="text" id="ftype" placeholder="Mfano: Jamvi, Ziara, Ndoa n.k" required></div>
+                    <div class="input-box">
+                        <label>Chagua Package</label>
+                        <select id="fpackage" required>
+                            <option value="" disabled selected>Chagua Package...</option>
+                            <option value="Jamvi|150000">1. Jamvi - 150,000/=</option>
+                            <option value="Live Package|1500000">2. Live Package - 1,500,000/=</option>
+                            <option value="Ziara Bila Live|250000">3. Ziara Bila Live - 250,000/=</option>
+                            <option value="Custom|0">Nyinginezo (Maelezo WhatsApp)</option>
+                        </select>
+                    </div>
+                    <div class="input-box"><label>Jina la Madrasa</label><input type="text" id="fmadrasa" placeholder="Jina la Madrasa" required></div>
+                    <div class="input-box"><label>Eneo la Madrasa</label><input type="text" id="flocation" placeholder="Mfano: Magomeni" required></div>
+                    <div class="input-box"><label>Tarehe ya Shughuli</label><input type="date" id="fdate" required></div>
+                    <div class="input-box"><label>Muda wa Kuanza</label><input type="time" id="ftime" required></div>
+                    <div class="input-box"><label>Siku za Media Kufanya Kazi</label><input type="number" id="fdays" min="1" placeholder="Siku ngapi?" required></div>
+                </div>
 
-<footer class="about-footer">
+                <div id="payment-notice" style="margin-top: 15px; padding: 10px; background: rgba(201, 96, 43, 0.2); border-left: 4px solid #c9602b; font-size: 13px; color: #fff;">
+                    <strong>Ilani ya Malipo:</strong> Unatakiwa kulipia asilimia **70%** ya gharama ya package unayochagua kama kianzio cha huduma.
+                </div>
+                <button type="submit" class="btn-submit-modal">Tuma Booking & Lipia 70%</button>
+            </form>
+        </div>
+    </div>
+
+    <footer class="about-footer">
     <div class="container">
         
         <div class="footer-section brand-info">
@@ -410,62 +315,54 @@
     </div>
 </footer>
 
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    const modal = document.getElementById("bookingModal");
-    const btnOpen = document.getElementById("btnOpenBooking");
-    const btnClose = document.getElementById("btnCloseModal");
-    const bookingForm = document.getElementById('farajaBookingForm');
-
-    // 1. Kufungua/Kufunga Modal
-    if(btnOpen) btnOpen.onclick = () => modal.style.display = "flex";
-    if(btnClose) btnClose.onclick = () => modal.style.display = "none";
-    window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
-
-    // 2. FORM SUBMISSION
-    if (bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            // Pata thamani ya Package
-            const packageRaw = document.getElementById("fpackage").value;
-            
-            if (!packageRaw || !packageRaw.includes('|')) {
-                alert("Tafadhali chagua Package kwanza!");
-                return;
+    <script>
+        // Preloader Logic
+        document.body.style.overflow = 'hidden';
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            if (preloader) {
+                preloader.style.opacity = '0';
+                preloader.style.visibility = 'hidden';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }, 800);
             }
-
-            const packageInfo = packageRaw.split('|');
-            const packageName = packageInfo[0].trim();
-            
-            // TIBA YA KOMA: Inatoa koma na nafasi kabla ya parseInt
-            let rawPrice = packageInfo[1].toString().replace(/,/g, '').trim();
-            const packagePrice = parseInt(rawPrice) || 0;
-            
-            // Piga hesabu ya 70%
-            const deposit = Math.round(packagePrice * 0.7);
-
-            // Kusanya Data nyingine
-            const bookingData = {
-                customerName: document.getElementById("fname").value,
-                customerPhone: document.getElementById("fphone").value,
-                serviceType: document.getElementById("ftype").value,
-                selectedPackage: packageName,
-                totalPrice: packagePrice,
-                depositAmount: deposit,
-                madrasaName: document.getElementById("fmadrasa").value,
-                location: document.getElementById("flocation").value,
-                eventDate: document.getElementById("fdate").value,
-                eventTime: document.getElementById("ftime").value,
-                duration: document.getElementById("fdays").value
-            };
-
-            // 1. HIFADHI DATA
-            localStorage.setItem('faraja_pending_job', JSON.stringify(bookingData));
-
-            // 2. REDIRECT (Tunahakikisha kiasi ni namba tupu bila koma kwenye URL)
-            window.location.href = "malipo.html?amount=" + deposit;
         });
-    }
-});
-</script>
+
+        // Booking Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const modal = document.getElementById("bookingModal");
+            const btnOpen = document.getElementById("btnOpenBooking");
+            const btnClose = document.getElementById("btnCloseModal");
+            const bookingForm = document.getElementById('farajaBookingForm');
+
+            if(btnOpen) btnOpen.onclick = () => modal.style.display = "flex";
+            if(btnClose) btnClose.onclick = () => modal.style.display = "none";
+            window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
+
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    const packageRaw = document.getElementById("fpackage").value;
+                    const packageInfo = packageRaw.split('|');
+                    let rawPrice = packageInfo[1].replace(/,/g, '').trim();
+                    const packagePrice = parseInt(rawPrice) || 0;
+                    const deposit = Math.round(packagePrice * 0.7);
+
+                    const bookingData = {
+                        customerName: document.getElementById("fname").value,
+                        customerPhone: document.getElementById("fphone").value,
+                        selectedPackage: packageInfo[0],
+                        depositAmount: deposit
+                        // ... data zingine kama ulivyozitaka
+                    };
+
+                    localStorage.setItem('faraja_pending_job', JSON.stringify(bookingData));
+                    window.location.href = "malipo.html?amount=" + deposit;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
